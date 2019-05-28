@@ -1,3 +1,6 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Main {
 
   public static void main (String [] args){
@@ -15,6 +18,9 @@ public class Main {
     //Testing flipNHeads
     flipNHeads(1);
     flipNHeads(2);
+
+    //Testing Clock
+    clock();
 
   }
 
@@ -51,5 +57,20 @@ public class Main {
 
 
   //clock uses Java’s built-in LocalDateTime object to constantly print out the current time to the console, second by second. 
+  public static void clock(){
+
+    LocalDateTime then = LocalDateTime.now().minusSeconds(2);
+
+    do {
+      LocalDateTime now = LocalDateTime.now();
+      if(now.getSecond() != then.getSecond()){
+        String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        System.out.println(time);
+        then = now;
+      }
+      
+    } while (true);    
+
+  }
 
 }
