@@ -18,11 +18,13 @@ public class Main {
     //Testing flipNHeads
     flipNHeads(1);
     flipNHeads(2);
+    flipNHeads(3);
 
     //Testing Clock
     clock();
 
   }
+
 
   //pluralize accepts a word and a number and if the number is zero or greater than one it returns a string with the word pluralized with an “s” 
   public static String pluralize (String word, int number){
@@ -39,16 +41,17 @@ public class Main {
 
     int headsAchieved = 0;
     int numberOfFlips = 0;
+
     do{
       double randomNumber = Math.random();
       numberOfFlips++;
       if (randomNumber >= 0.5f){
         headsAchieved++;
         System.out.println("Heads");
-      }else {
+      } else {
+        headsAchieved = 0;
         System.out.println("Tails");
       }
-
     }while (headsAchieved != numberOfHeadsDesired);
 
     System.out.println("It took " + numberOfFlips + " flips to flip " + numberOfHeadsDesired + " " + pluralize("head", numberOfHeadsDesired) + " in a row.");
@@ -68,9 +71,9 @@ public class Main {
         System.out.println(time);
         then = now;
       }
-      
     } while (true);    
 
   }
+
 
 }
