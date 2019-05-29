@@ -9,6 +9,8 @@ import static org.junit.Assert.*;
 public class LibraryTest {
     @Test public void testSomeLibraryMethod() {
         Library classUnderTest = new Library();
-        assertTrue("someLibraryMethod should return 'true'", classUnderTest.someLibraryMethod());
+        int inputRolls = 4;
+        assertEquals("Should return an array of the appropriate length",
+                inputRolls, classUnderTest.roll(inputRolls).length);
     }
 }

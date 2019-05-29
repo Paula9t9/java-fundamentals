@@ -4,7 +4,9 @@
 package basicLibrary;
 
 public class Library {
-    public boolean someLibraryMethod() {
-        return true;
+    public int[] roll(int numberOfRolls){
+
+
+        return new int[]{1, 2, 3, 4};
     }
 }
