@@ -26,5 +26,13 @@ public class LibraryTest {
                 libraryInstance.containsDuplicates(inputArray));
     }
 
+    @Test public void testDuplicates_false(){
+        Library library = new Library();
+        int[] inputArray = new int[]{1, 2, 3, 4, 5};
+        assertFalse("Should return false if there are no duplicates",
+                library.containsDuplicates(inputArray));
+
+    }
+
 
 }

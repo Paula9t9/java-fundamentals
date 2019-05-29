@@ -22,8 +22,10 @@ public class Library {
         boolean duplicateFound = false;
         for (int i = 0; i < arrayToCheck.length; i++){
 
-            for (int number : arrayToCheck ){
-                if (number == arrayToCheck[i]){
+            for (int j = 0; j < arrayToCheck.length; j++){
+                if(i == j){
+                    continue;
+                } else if (arrayToCheck[j] == arrayToCheck[i]){
                     duplicateFound = true;
                     break;
                 }
@@ -36,5 +38,5 @@ public class Library {
         return duplicateFound;
     }
 
-    
+
 }
