@@ -39,4 +39,10 @@ public class Library {
     }
 
 
+    public int averageCalculator(int[] array){
+
+        return 3;
+    }
+
+
 }

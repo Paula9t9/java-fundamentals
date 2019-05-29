@@ -19,6 +19,7 @@ public class LibraryTest {
     //Stretch: Test if array is empty
     //Test if numbers in array are greater or less than 1-6
 
+
     @Test public void testDuplicates_basicTrue(){
         Library libraryInstance = new Library();
         int[] inputArray = new int[]{1, 2, 2, 4};
@@ -32,6 +33,16 @@ public class LibraryTest {
         assertFalse("Should return false if there are no duplicates",
                 library.containsDuplicates(inputArray));
 
+    }
+
+    //Stretch: test empty arrays, test huge arrays
+
+
+    @Test public void testAverageCalculator_basicTest(){
+        Library library = new Library();
+        int[] inputArray = new int[]{1, 2, 3, 4, 5};
+        assertEquals("Should correctly calculate the average", 3,
+                library.averageCalculator(inputArray));
     }
 
 
