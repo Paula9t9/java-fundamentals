@@ -48,4 +48,9 @@ public class Library {
     }
 
 
+    public int[] lowestAverageArrayCalc(int[][] inputArrayOfArrays){
+
+        return inputArrayOfArrays[2];
+    }
+
 }

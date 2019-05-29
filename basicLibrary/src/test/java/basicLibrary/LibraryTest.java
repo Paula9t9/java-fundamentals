@@ -57,4 +57,20 @@ public class LibraryTest {
     //Stretch: test doubles, test empty arrays, test negative numbers, test non-numbers
 
 
+    @Test public void testLowestAverageArrayCalc_basicTest(){
+        Library library = new Library();
+        //Yes, I copied this from the assignment. I am not ashamed.
+        int[][] weeklyMonthTemperatures = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        int[] expectedResult = {55, 54, 60, 53, 59, 57, 61};
+
+        assertArrayEquals("Should return the array with the lowest average", expectedResult,
+                library.lowestAverageArrayCalc(weeklyMonthTemperatures));
+
+
+    }
 }
