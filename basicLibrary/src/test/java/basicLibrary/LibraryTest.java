@@ -45,5 +45,16 @@ public class LibraryTest {
                 library.averageCalculator(inputArray));
     }
 
+    //Test an array where all values are the same
+    @Test public void testAverageCalculator_sameValueArray(){
+        Library library = new Library();
+        int[] inputArray = new int[]{2, 2, 2, 2, 2, 2, 2, 2};
+        assertEquals("Should correctly calculate average when all values the same",
+                2, library.averageCalculator(inputArray));
+
+    }
+
+    //Stretch: test doubles, test empty arrays, test negative numbers, test non-numbers
+
 
 }

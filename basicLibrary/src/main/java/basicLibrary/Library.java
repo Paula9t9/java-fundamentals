@@ -40,8 +40,11 @@ public class Library {
 
 
     public int averageCalculator(int[] array){
-
-        return 3;
+        int total = 0;
+        for(int number : array){
+            total += number;
+        }
+        return (total / array.length);
     }
 
 
