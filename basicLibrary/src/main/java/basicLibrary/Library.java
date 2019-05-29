@@ -3,6 +3,8 @@
  */
 package basicLibrary;
 
+import java.net.Inet4Address;
+
 public class Library {
 
 
@@ -50,7 +52,19 @@ public class Library {
 
     public int[] lowestAverageArrayCalc(int[][] inputArrayOfArrays){
 
-        return inputArrayOfArrays[2];
+        int[] returnArray = inputArrayOfArrays[0];
+        int lowScore = Integer.MAX_VALUE;
+
+        for (int[] array : inputArrayOfArrays){
+            int thisAverage = averageCalculator(array);
+            if (thisAverage < lowScore){
+                lowScore = thisAverage;
+                returnArray = array;
+            }
+
+        }
+
+        return returnArray;
     }
 
 }

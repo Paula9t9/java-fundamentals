@@ -70,7 +70,8 @@ public class LibraryTest {
 
         assertArrayEquals("Should return the array with the lowest average", expectedResult,
                 library.lowestAverageArrayCalc(weeklyMonthTemperatures));
-
-
     }
+
+
+    //Stretch: test values with similar averages (12.5 vs 12.2, etc), test empty arrays, test NaNs, etc
 }
