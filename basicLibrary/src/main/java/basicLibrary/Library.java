@@ -4,6 +4,8 @@
 package basicLibrary;
 
 public class Library {
+
+
     public int[] roll(int numberOfRolls){
 
         int[] newArray = new int[numberOfRolls];
@@ -15,4 +17,24 @@ public class Library {
     }
 
 
+    public boolean containsDuplicates(int[] arrayToCheck){
+
+        boolean duplicateFound = false;
+        for (int i = 0; i < arrayToCheck.length; i++){
+
+            for (int number : arrayToCheck ){
+                if (number == arrayToCheck[i]){
+                    duplicateFound = true;
+                    break;
+                }
+            }
+
+            if (duplicateFound){
+                break;
+            }
+        }
+        return duplicateFound;
+    }
+
+    
 }

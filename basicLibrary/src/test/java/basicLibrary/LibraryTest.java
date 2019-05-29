@@ -19,5 +19,12 @@ public class LibraryTest {
     //Stretch: Test if array is empty
     //Test if numbers in array are greater or less than 1-6
 
+    @Test public void testDuplicates_basicTrue(){
+        Library libraryInstance = new Library();
+        int[] inputArray = new int[]{1, 2, 2, 4};
+        assertTrue("Should return true if duplicates in array",
+                libraryInstance.containsDuplicates(inputArray));
+    }
+
 
 }
