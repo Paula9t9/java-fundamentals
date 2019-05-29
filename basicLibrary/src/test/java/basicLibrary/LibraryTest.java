@@ -7,10 +7,17 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
-    @Test public void testSomeLibraryMethod() {
+
+
+    @Test public void testRoll_basicTest() {
         Library classUnderTest = new Library();
         int inputRolls = 4;
         assertEquals("Should return an array of the appropriate length",
                 inputRolls, classUnderTest.roll(inputRolls).length);
     }
+
+    //Stretch: Test if array is empty
+    //Test if numbers in array are greater or less than 1-6
+
+
 }

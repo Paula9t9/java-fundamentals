@@ -6,7 +6,13 @@ package basicLibrary;
 public class Library {
     public int[] roll(int numberOfRolls){
 
+        int[] newArray = new int[numberOfRolls];
+        for (int i = 0; i < newArray.length; i++){
+            newArray[i] = (int) (Math.random() * 6);
+        }
 
-        return new int[]{1, 2, 3, 4};
+        return newArray;
     }
+
+
 }
