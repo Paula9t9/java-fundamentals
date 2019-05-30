@@ -74,4 +74,28 @@ public class LibraryTest {
 
 
     //Stretch: test values with similar averages (12.5 vs 12.2, etc), test empty arrays, test NaNs, etc
+
+
+    @Test
+    public void testAnalyzeWeatherData_basicTest() {
+        Library library = new Library();
+        int[][] inputData = {
+                {66, 64, 58, 65, 71, 57, 60},
+                {57, 65, 65, 70, 72, 65, 51},
+                {55, 54, 60, 53, 59, 57, 61},
+                {65, 56, 55, 52, 55, 62, 57}
+        };
+        String expectedOutput = "High: 72" +
+                "/nLow: 51" +
+                "/nNever saw temperature: 63" +
+                "/nNever saw temperature: 67" +
+                "/nNever saw temperature: 68" +
+                "/nNever saw temperature: 69";
+
+        assertEquals("Should return a string with the monthly high, low, " +
+                "and temperatures that were not seen",
+                expectedOutput, library.analyzeWeatherData(inputData));
+    }
+
+
 }

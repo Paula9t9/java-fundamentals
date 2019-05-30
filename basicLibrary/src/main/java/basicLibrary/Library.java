@@ -67,4 +67,12 @@ public class Library {
         return returnArray;
     }
 
+
+    public String analyzeWeatherData(int[][] weeklyMonthTemperatures){
+
+
+
+        return "";
+    }
+
 }
