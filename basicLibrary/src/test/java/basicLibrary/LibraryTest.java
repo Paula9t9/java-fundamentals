@@ -4,6 +4,10 @@
 package basicLibrary;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class LibraryTest {
@@ -96,6 +100,32 @@ public class LibraryTest {
                 "and temperatures that were not seen",
                 expectedOutput, library.analyzeWeatherData(inputData));
     }
+
+    //Stretch tests: test for every temp hit, test for empty values, etc
+
+
+    @Test
+    public void testTally_basicTest(){
+        Library library = new Library();
+        String expectedOutput = "Bush received the most votes!";
+
+        List<String> votes = new ArrayList<>();
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+
+        assertEquals("Should return a string telling who had the most votes",
+                expectedOutput, library.tally(votes));
+    }
+
+    //Stretch tests: test a tie, test empty values, etc
+
 
 
 }

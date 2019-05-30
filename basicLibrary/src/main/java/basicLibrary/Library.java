@@ -4,7 +4,10 @@
 package basicLibrary;
 
 import java.net.Inet4Address;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Library {
 
@@ -112,13 +115,41 @@ public class Library {
                 returnStringBuilder.append("\nNever saw temperature: " + Integer.toString(i));
             }
 
-
         }
-
-
-        //Return string (StringBuilder)
 
         return returnStringBuilder.toString();
     }
 
+
+    public String tally(List<String> incomingList){
+        HashMap<String, Integer> candidates = new HashMap<>();
+
+        //count the votes
+        for (String name : incomingList) {
+            //If the candidate is already in HashSet, increment it. Otherwise, add them.
+            if(candidates.containsKey(name)){
+                int countSoFar = candidates.get(name);
+                candidates.put(name, countSoFar + 1);
+            } else {
+                candidates.put(name, 1);
+            }
+        }
+
+        //determine the winner and build a victory string
+        String winningName = "";
+        int winningCount = 0;
+
+        //Used G4G to figure out how to iterate through hashmap
+        // https://www.geeksforgeeks.org/iterate-map-java/
+        for (Map.Entry<String, Integer> entry : candidates.entrySet()){
+            if(entry.getValue() > winningCount){
+                winningName = entry.getKey();
+                winningCount = entry.getValue();
+            }
+        }
+
+        String victoryString = winningName + " received the most votes!";
+
+        return victoryString;
+    }
 }
