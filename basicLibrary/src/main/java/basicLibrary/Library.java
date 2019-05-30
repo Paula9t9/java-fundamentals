@@ -106,7 +106,7 @@ public class Library {
 
         //Find temps that were dodged
         for (int i = minTemp; i < maxTemp; i++){
-            if(temperatures.containsKey(i)){
+            if(temperatures.containsKey(Integer.toString(i))){
                 continue;
             }else {
                 returnStringBuilder.append("\nNever saw temperature: " + Integer.toString(i));

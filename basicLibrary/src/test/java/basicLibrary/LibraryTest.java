@@ -85,12 +85,12 @@ public class LibraryTest {
                 {55, 54, 60, 53, 59, 57, 61},
                 {65, 56, 55, 52, 55, 62, 57}
         };
-        String expectedOutput = "High: 72" +
-                "/nLow: 51" +
-                "/nNever saw temperature: 63" +
-                "/nNever saw temperature: 67" +
-                "/nNever saw temperature: 68" +
-                "/nNever saw temperature: 69";
+        String expectedOutput = "High: 72\n" +
+                "Low: 51\n" +
+                "Never saw temperature: 63\n" +
+                "Never saw temperature: 67\n" +
+                "Never saw temperature: 68\n" +
+                "Never saw temperature: 69";
 
         assertEquals("Should return a string with the monthly high, low, " +
                 "and temperatures that were not seen",
