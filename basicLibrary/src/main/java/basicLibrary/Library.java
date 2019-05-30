@@ -83,6 +83,7 @@ public class Library {
         StringBuilder returnStringBuilder = new StringBuilder();
 
 
+        //iterate through the arrays to set the high/low values and build the hashmap
         for (int[] array : weeklyMonthTemperatures){
             for (int temperature : array){
                 //Check if number is max or min temp so far and set it.
@@ -104,6 +105,7 @@ public class Library {
             }
         }
 
+        //add the high and low temperatures to the return string
         returnStringBuilder.append("High: " + maxTemp +
                 "\nLow: " + minTemp);
 
@@ -114,13 +116,12 @@ public class Library {
             }else {
                 returnStringBuilder.append("\nNever saw temperature: " + Integer.toString(i));
             }
-
         }
-
         return returnStringBuilder.toString();
     }
 
 
+    //counts the names in a list of Strings to determine who got the most votes
     public String tally(List<String> incomingList){
         HashMap<String, Integer> candidates = new HashMap<>();
 
@@ -149,7 +150,8 @@ public class Library {
         }
 
         String victoryString = winningName + " received the most votes!";
-
         return victoryString;
     }
+
+
 }
