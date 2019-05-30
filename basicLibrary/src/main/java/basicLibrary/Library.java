@@ -4,6 +4,7 @@
 package basicLibrary;
 
 import java.net.Inet4Address;
+import java.util.HashMap;
 
 public class Library {
 
@@ -68,11 +69,56 @@ public class Library {
     }
 
 
+
+    //Analyzes temperatures to find the high, low, and which temperatures were not seen between those values
     public String analyzeWeatherData(int[][] weeklyMonthTemperatures){
+        int minTemp = Integer.MAX_VALUE;
+        int maxTemp = 0;
+        HashMap<String, Integer> temperatures = new HashMap<>();
+        //String builder recommended by Tim, used this site for examples:
+        // https://www.geeksforgeeks.org/stringbuilder-class-in-java-with-examples/
+        StringBuilder returnStringBuilder = new StringBuilder();
 
 
+        for (int[] array : weeklyMonthTemperatures){
+            for (int temperature : array){
+                //Check if number is max or min temp so far and set it.
+                if (temperature > maxTemp){
+                    maxTemp = temperature;
+                } else if (temperature < minTemp){
+                    minTemp = temperature;
+                }
 
-        return "";
+                String stringyTemperature = Integer.toString(temperature);
+
+                //If the temp is already in HashSet, increment it. Otherwise, add it
+                if(temperatures.containsKey(stringyTemperature)){
+                    int countSoFar = temperatures.get(stringyTemperature);
+                    temperatures.put(stringyTemperature, countSoFar + 1);
+                } else {
+                    temperatures.put(stringyTemperature, 1);
+                }
+            }
+        }
+
+        returnStringBuilder.append("High: " + maxTemp +
+                "\nLow: " + minTemp);
+
+        //Find temps that were dodged
+        for (int i = minTemp; i < maxTemp; i++){
+            if(temperatures.containsKey(i)){
+                continue;
+            }else {
+                returnStringBuilder.append("\nNever saw temperature: " + Integer.toString(i));
+            }
+
+
+        }
+
+
+        //Return string (StringBuilder)
+
+        return returnStringBuilder.toString();
     }
 
 }
