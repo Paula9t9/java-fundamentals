@@ -4,6 +4,10 @@
 package basicLibrary;
 
 import java.net.Inet4Address;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Library {
 
@@ -66,5 +70,88 @@ public class Library {
 
         return returnArray;
     }
+
+
+
+    //Analyzes temperatures to find the high, low, and which temperatures were not seen between those values
+    public String analyzeWeatherData(int[][] weeklyMonthTemperatures){
+        int minTemp = Integer.MAX_VALUE;
+        int maxTemp = 0;
+        HashMap<String, Integer> temperatures = new HashMap<>();
+        //String builder recommended by Tim, used this site for examples:
+        // https://www.geeksforgeeks.org/stringbuilder-class-in-java-with-examples/
+        StringBuilder returnStringBuilder = new StringBuilder();
+
+
+        //iterate through the arrays to set the high/low values and build the hashmap
+        for (int[] array : weeklyMonthTemperatures){
+            for (int temperature : array){
+                //Check if number is max or min temp so far and set it.
+                if (temperature > maxTemp){
+                    maxTemp = temperature;
+                } else if (temperature < minTemp){
+                    minTemp = temperature;
+                }
+
+                String stringyTemperature = Integer.toString(temperature);
+
+                //If the temp is already in HashSet, increment it. Otherwise, add it
+                if(temperatures.containsKey(stringyTemperature)){
+                    int countSoFar = temperatures.get(stringyTemperature);
+                    temperatures.put(stringyTemperature, countSoFar + 1);
+                } else {
+                    temperatures.put(stringyTemperature, 1);
+                }
+            }
+        }
+
+        //add the high and low temperatures to the return string
+        returnStringBuilder.append("High: " + maxTemp +
+                "\nLow: " + minTemp);
+
+        //Find temps that were dodged
+        for (int i = minTemp; i < maxTemp; i++){
+            if(temperatures.containsKey(Integer.toString(i))){
+                continue;
+            }else {
+                returnStringBuilder.append("\nNever saw temperature: " + Integer.toString(i));
+            }
+        }
+        return returnStringBuilder.toString();
+    }
+
+
+    //counts the names in a list of Strings to determine who got the most votes
+    public String tally(List<String> incomingList){
+        HashMap<String, Integer> candidates = new HashMap<>();
+
+        //count the votes
+        for (String name : incomingList) {
+            //If the candidate is already in HashSet, increment it. Otherwise, add them.
+            if(candidates.containsKey(name)){
+                int countSoFar = candidates.get(name);
+                candidates.put(name, countSoFar + 1);
+            } else {
+                candidates.put(name, 1);
+            }
+        }
+
+        //determine the winner and build a victory string
+        String winningName = "";
+        int winningCount = 0;
+
+        //Used G4G to figure out how to iterate through hashmap
+        // https://www.geeksforgeeks.org/iterate-map-java/
+        for (Map.Entry<String, Integer> entry : candidates.entrySet()){
+            if(entry.getValue() > winningCount){
+                winningName = entry.getKey();
+                winningCount = entry.getValue();
+            }
+        }
+
+        String victoryString = winningName + " received the most votes!";
+        return victoryString;
+    }
+
 
 }
