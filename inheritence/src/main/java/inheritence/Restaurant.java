@@ -17,15 +17,26 @@ public class Restaurant {
     }
 
 
-//    public void addReview(Review review){
-//
-//        if(reviewList.contains(review.getAuthor())){
-//            //TODO: change to throw custom exception?
-//            System.out.println("Unable to add review. Author already has already reviewed this restaurant.");
-//        }else {
-//            reviewList.add(review);
-//        }
-//    }
+    public void addReview(Review newReview){
+
+        if(reviewList.contains(newReview)){
+            //TODO: change to throw custom exception?
+            System.out.println("Unable to add review. Already exists.");
+        }else {
+
+            reviewList.add(newReview);
+
+            //calculate new restaurant star rating
+            int starSum = 0;
+            for (Review review : this.reviewList){
+                starSum += review.getStars();
+            }
+
+            int starAverage = starSum / this.reviewList.size();
+            this.stars = starAverage;
+
+        }
+    }
 
 
     public String toString(){

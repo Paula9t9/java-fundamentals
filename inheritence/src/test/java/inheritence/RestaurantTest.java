@@ -36,4 +36,13 @@ public class RestaurantTest {
         assertEquals("Restaurant should equal restaurant with same values",
                 testRestaurant, sneakyCloneTestRestaurant);
     }
+
+    @Test
+    public void testAddReview(){
+
+        //Test that star rating properly updates
+        //Test that review list contains the right reviews
+        //Test that adding the same review twice doesn't change the star rating
+
+    }
 }
