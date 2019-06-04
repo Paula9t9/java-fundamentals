@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class RestaurantTest {
 
     @Test
-    public void tesRestaurantConstructor() {
+    public void testRestaurantConstructor() {
         Restaurant testRestaurant = new Restaurant("Cash Brewery", 3, 2);
 
         assertEquals("Name should match Cash Brewery",
