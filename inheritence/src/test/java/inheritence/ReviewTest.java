@@ -8,7 +8,7 @@ public class ReviewTest {
 
     @Test
     public void testReviewConstructor(){
-        Restaurant testRestaurant = new Restaurant("Cash Brewery", 3, 2);
+        Restaurant testRestaurant = new Restaurant("Cash Brewery", 2);
         Review testReview = new Review(testRestaurant,
                 "Gordon Ramsay", "This is awful.", 0);
 
@@ -26,7 +26,7 @@ public class ReviewTest {
 
     @Test
     public void testReviewToString(){
-        Restaurant testRestaurant = new Restaurant("Cash Brewery", 3, 2);
+        Restaurant testRestaurant = new Restaurant("Cash Brewery", 2);
         Review testReview = new Review( testRestaurant,"Gordon Ramsay", "This is awful.", 0);
 
         String expectedString = "Review for restaurant Cash Brewery by author: Gordon Ramsay, stars: 0, body: This is" +
@@ -38,7 +38,7 @@ public class ReviewTest {
 
     @Test
     public void testEquals(){
-        Restaurant testRestaurant = new Restaurant("Cash Brewery", 3, 2);
+        Restaurant testRestaurant = new Restaurant("Cash Brewery", 2);
         Review testReview = new Review( testRestaurant,
                 "Gordon Ramsay", "This is awful.", 0);
         Review sneakyCloneTestReview = new Review( testRestaurant,

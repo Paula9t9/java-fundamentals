@@ -10,29 +10,35 @@ public class Restaurant {
     private int priceCategory;
     private ArrayList<Review> reviewList;
 
-    public Restaurant(String name, int stars, int priceCategory) {
+    // Don't initialize with user-defined stars because only reviews should update stars
+    public Restaurant(String name, int priceCategory) {
         this.name = name;
-        this.stars = stars;
+        // initialize starSum at 3 so new restaurants don't default to 0 stars
+        this.stars = 3;
         this.priceCategory = priceCategory;
+        this.reviewList = new ArrayList<>();
     }
 
 
     public void addReview(Review newReview){
 
-        if(reviewList.contains(newReview)){
+        if(this.reviewList != null && this.reviewList.contains(newReview)){
             //TODO: change to throw custom exception?
             System.out.println("Unable to add review. Already exists.");
         }else {
 
-            reviewList.add(newReview);
+            this.reviewList.add(newReview);
 
-            //calculate new restaurant star rating
-            int starSum = 0;
+            // calculate new restaurant star rating
+            // initialize starSum at 3 so new restaurants don't default to 0 stars
+            // Don't use this.stars because we
+            // want to iterate through reviews every time for best accuracy since we are using ints
+            int starSum = 3;
             for (Review review : this.reviewList){
                 starSum += review.getStars();
             }
 
-            int starAverage = starSum / this.reviewList.size();
+            int starAverage = starSum / (this.reviewList.size() + 1);
             this.stars = starAverage;
 
         }
