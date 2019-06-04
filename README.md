@@ -30,8 +30,33 @@ Calculates the average for a provided array.
 ### lowestAverageArrayCalc(int[][] inputArrayOfArrays)
 Takes in an array of arrays and determines which array has the lowest average. Returns that array. 
 
-## analyzeWeatherData(int[][] weeklyMonthTemperatures)
+### analyzeWeatherData(int[][] weeklyMonthTemperatures)
 Analyzes temperatures to find the high, low, and which temperatures were not seen between those values
 
-## tally(List<String> incomingList)
+### tally(List<String> incomingList)
 Counts the names in a List of Strings to determine who got the most votes
+
+___
+## Inheritence
+A place to play with inheritence concepts
+
+### Architecture
+
+The inheritence package contains two classes: Restaurant and Review
+
+#### Restaurant
+
+Keeps track of a restaurant's name, star rating, price category, and list of reviews.
+
+#### Review
+Keeps track of a review's author, rating, body, and the associated restaurant
+
+### How to Test
+
+Tests can be run by navigating to the inheritence directory in a terminal and executing the following command:
+
+``` ./gradlew test ```
+
+Tests can be found in the source directory.
+
+[Link to test folder](./inheritence/src/test/java/inheritence)
