@@ -20,4 +20,15 @@ public class ReviewTest {
     }
 
 
+    @Test
+    public void testReviewToString(){
+        Review testReview = new Review("Gordon Ramsay", "This is awful.", 0);
+
+        String expectedString = "Review author: Gordon Ramsay, stars: 0, body: This is awful.";
+
+        assertEquals("Should return toString for appropriate Review",
+                expectedString, testReview.toString());
+    }
+
+
 }

@@ -12,6 +12,12 @@ public class Review {
     }
 
 
+    public String toString(){
+        return String.format("Review author: %s, stars: %d, body: %s",
+                this.author, this.stars, this.body);
+    }
+
+
     public String getBody() {
         return body;
     }

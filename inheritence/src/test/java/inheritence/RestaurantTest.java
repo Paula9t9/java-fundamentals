@@ -16,4 +16,14 @@ public class RestaurantTest {
         assertEquals("Should have a price category of 2",
                 2, testRestaurant.getPriceCategory());
     }
+
+    @Test
+    public void testReviewToString(){
+        Restaurant testRestaurant = new Restaurant("Cash Brewery", 3, 2);
+
+        String expectedString = "Restaurant name: Cash Brewery, stars: 3, priceCategory: 2";
+
+        assertEquals("Should return toString for appropriate Restaurant",
+                expectedString, testRestaurant.toString());
+    }
 }

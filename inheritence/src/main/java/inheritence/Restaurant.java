@@ -12,6 +12,11 @@ public class Restaurant {
         this.priceCategory = priceCategory;
     }
 
+    public String toString(){
+        return String.format("Restaurant name: %s, stars: %d, priceCategory: %d",
+                this.name, this.stars, this.priceCategory);
+    }
+
 
     public int getPriceCategory() {
         return priceCategory;
