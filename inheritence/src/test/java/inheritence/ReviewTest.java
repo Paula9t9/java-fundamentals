@@ -36,5 +36,18 @@ public class ReviewTest {
                 expectedString, testReview.toString());
     }
 
+    @Test
+    public void testEquals(){
+        Restaurant testRestaurant = new Restaurant("Cash Brewery", 3, 2);
+        Review testReview = new Review( testRestaurant,
+                "Gordon Ramsay", "This is awful.", 0);
+        Review sneakyCloneTestReview = new Review( testRestaurant,
+                "Gordon Ramsay", "This is awful.", 0);
+
+        assertEquals("Review should equal itself", testReview, testReview);
+        assertEquals("Restaurant should equal restaurant with same values",
+                testReview, sneakyCloneTestReview);
+    }
+
 
 }

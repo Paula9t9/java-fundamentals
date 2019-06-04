@@ -26,4 +26,14 @@ public class RestaurantTest {
         assertEquals("Should return toString for appropriate Restaurant",
                 expectedString, testRestaurant.toString());
     }
+
+    @Test
+    public void testEquals(){
+        Restaurant testRestaurant = new Restaurant("Cash Brewery", 3, 2);
+        Restaurant sneakyCloneTestRestaurant = new Restaurant("Cash Brewery", 3, 2);
+
+        assertEquals("Restaurant should equal itself", testRestaurant, testRestaurant);
+        assertEquals("Restaurant should equal restaurant with same values",
+                testRestaurant, sneakyCloneTestRestaurant);
+    }
 }
