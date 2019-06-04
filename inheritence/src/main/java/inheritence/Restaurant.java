@@ -18,6 +18,10 @@ public class Restaurant {
     }
 
 
+
+    //Getters and Setters
+
+
     public int getPriceCategory() {
         return priceCategory;
     }
