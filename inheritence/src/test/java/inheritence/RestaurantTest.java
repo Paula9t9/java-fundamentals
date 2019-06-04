@@ -2,6 +2,8 @@ package inheritence;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class RestaurantTest {
@@ -54,7 +56,19 @@ public class RestaurantTest {
                 1, testRestaurant.getStars());
 
         //Test that review list contains the right reviews
+        Review secondTestReview = new Review(testRestaurant,
+                "Paula Deen", "This is great! So much butter!", 5);
+        testRestaurant.addReview(secondTestReview);
 
+        ArrayList<Review> expectedReviewList = new ArrayList<>();
+        expectedReviewList.add(testReview);
+        expectedReviewList.add(secondTestReview);
 
+        assertEquals("Review list should contain the added reviews",
+                expectedReviewList, testRestaurant.getReviewList());
+
+        //Test that review score properly updates with multiple reviews
+        assertEquals("Stars should properly update with multiple reviews",
+                2, testRestaurant.getStars());
     }
 }
