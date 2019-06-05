@@ -7,49 +7,49 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class RestaurantTest {
+public class ShopTest {
 
-    Restaurant testRestaurant;
+    Shop testShop;
 
     @Before
     public void initializeTestVariables(){
-        testRestaurant = initializeRestaurant();
+        testShop = initializeShop();
     }
 
     @Test
     public void testRestaurantConstructor() {
-        assertEquals("Name should match Cash Brewery",
-                "Cash Brewery", testRestaurant.getName());
-        assertEquals("Should have 3 stars", 3, testRestaurant.getStars());
+        assertEquals("Name should match GameStop",
+                "GameStop", testShop.getName());
+        assertEquals("Should have 3 stars", 3, testShop.getStars());
         assertEquals("Should have a price category of 2",
-                2, testRestaurant.getPriceCategory());
+                2, testShop.getPriceCategory());
     }
 
     @Test
     public void testReviewToString(){
-        String expectedString = "Restaurant name: Cash Brewery, stars: 3, priceCategory: 2";
+        String expectedString = "Shop name: GameStop, stars: 3, priceCategory: 2";
 
         assertEquals("Should return toString for appropriate Restaurant",
-                expectedString, testRestaurant.toString());
+                expectedString, testShop.toString());
     }
 
     @Test
     public void testEquals(){
-        Restaurant sneakyCloneTestRestaurant = initializeRestaurant();
+        Shop sneakyCloneTestShop = initializeShop();
 
-        assertEquals("Restaurant should equal itself", testRestaurant, testRestaurant);
+        assertEquals("Shop should equal itself", testShop, testShop);
         assertEquals("Restaurant should equal restaurant with same values",
-                testRestaurant, sneakyCloneTestRestaurant);
+                testShop, sneakyCloneTestShop);
     }
 
     //Test that star rating properly updates
     @Test
     public void testAddReview_starRatingUpdate(){
         //addReview is called in review constructor
-        Review testReview = initializeSadReview(testRestaurant);
+        Review testReview = initializeSadReview(testShop);
 
         assertEquals("Star rating should properly update after adding new review.",
-                1, testRestaurant.getStars());
+                1, testShop.getStars());
 
     }
 
@@ -57,11 +57,11 @@ public class RestaurantTest {
     @Test
     public void testAddReview_addingTwice(){
         //addReview is called in review constructor
-        Review testReview = initializeSadReview(testRestaurant);
+        RevShop testReview = initializeSadReview(testShop);
 
-        testRestaurant.addReview(testReview);
+        testShop.addReview(testReview);
         assertEquals("Star rating should not update if review already added",
-                1, testRestaurant.getStars());
+                1, testShop.getStars());
 
     }
 
@@ -69,40 +69,40 @@ public class RestaurantTest {
     @Test
     public void testAddReview_List(){
         //addReview is called in review constructor
-        Review testReview = initializeSadReview(testRestaurant);
+        RevShop testReview = initializeSadReview(testShop);
 
-        Review secondTestReview = initializeHappyReview(testRestaurant);
+        RevShop secondTestReview = initializeHappyReview(testShop);
 
-        ArrayList<Review> expectedReviewList = new ArrayList<>();
+        ArrayList<RevShop> expectedReviewList = new ArrayList<>();
         expectedReviewList.add(testReview);
         expectedReviewList.add(secondTestReview);
 
         assertEquals("Review list should contain the added reviews",
-                expectedReviewList, testRestaurant.getReviewList());
+                expectedReviewList, testShop.getReviewList());
     }
 
     //Test that review score properly updates with multiple reviews
     @Test
     public void testAddReview_starMultiple(){
         //addReview is called in review constructor
-        Review testReview = initializeSadReview(testRestaurant);
-        Review testReview2 = initializeHappyReview(testRestaurant);
+        RevShop testReview = initializeSadReview(testShop);
+        RevShop testReview2 = initializeHappyReview(testShop);
 
         assertEquals("Stars should properly update with multiple reviews",
-                2, testRestaurant.getStars());
+                2, testShop.getStars());
     }
 
-    private Restaurant initializeRestaurant(){
-        return new Restaurant("Cash Brewery", 2);
+    private Shop initializeShop(){
+        return new Shop("GameStop", 2);
     }
 
-    private RevRestaurant initializeSadReview(Restaurant restaurant){
-        return new RevRestaurant(restaurant,
+    private RevShop initializeSadReview(Shop shop){
+        return new RevShop(shop,
                 "Gordon Ramsay", "This is awful.", 0);
     }
 
-    private RevRestaurant initializeHappyReview(Restaurant restaurant){
-        return new RevRestaurant(restaurant,
+    private RevShop initializeHappyReview(Shop shop){
+        return new RevShop(shop,
                 "Paula Deen", "This is great! So much butter!", 5);
     }
 }

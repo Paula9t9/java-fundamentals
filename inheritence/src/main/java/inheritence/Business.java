@@ -2,6 +2,6 @@ package inheritence;
 
 public interface Business {
 
-    void addReview(Review newReview);
+    void addReview(Review incomingReview);
 
 }
