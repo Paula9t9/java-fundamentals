@@ -97,12 +97,12 @@ public class RestaurantTest {
     }
 
     private Review initializeSadReview(Restaurant restaurant){
-        return new Review(
+        return new RevRestaurant(restaurant,
                 "Gordon Ramsay", "This is awful.", 0);
     }
 
     private Review initializeHappyReview(Restaurant restaurant){
-        return new Review(
+        return new RevRestaurant(restaurant,
                 "Paula Deen", "This is great! So much butter!", 5);
     }
 }

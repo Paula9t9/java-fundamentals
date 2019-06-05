@@ -3,12 +3,11 @@ package inheritence;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Restaurant {
+public class Restaurant implements Business{
     private String name;
-    // TODO: I'm pretty sure there's a way to limit stars to 0-5, and price category to 1-3;
     private int stars;
     private int priceCategory;
-    private ArrayList<Review> reviewList;
+    private ArrayList<RevRestaurant> reviewList;
 
     // Don't initialize with user-defined stars because only reviews should update stars
     public Restaurant(String name, int priceCategory) {
@@ -20,7 +19,17 @@ public class Restaurant {
     }
 
 
-    public void addReview(Review newReview){
+    public void addReview(Review incomingReview){
+        // Check that it's an instanceOf() RevReview
+        // If not, we have the wrong review - IllegalArgumentException ?
+        // If so, cast it and use it
+
+        if(!(incomingReview instanceof RevRestaurant)){
+            throw new IllegalArgumentException("Should provide a review of type RevRestaurant");
+        }
+
+        RevRestaurant newReview = (RevRestaurant) incomingReview;
+
         //Don't add if review is already in list
         if(this.reviewList != null && this.reviewList.contains(newReview)){
             System.out.println("Unable to add review. Already exists.");
@@ -49,7 +58,6 @@ public class Restaurant {
     }
 
 
-    @Override
     public boolean equals (Object o){
         // check if passed in object is literally this object
         if(o == this){
@@ -102,11 +110,13 @@ public class Restaurant {
         this.name = name;
     }
 
-    public ArrayList<Review> getReviewList() {
+    public ArrayList<RevRestaurant> getReviewList() {
         return reviewList;
     }
 
-    public void setReviewList(ArrayList<Review> reviewList) {
+    public void setReviewList(ArrayList<RevRestaurant> reviewList) {
         this.reviewList = reviewList;
     }
+
+
 }
