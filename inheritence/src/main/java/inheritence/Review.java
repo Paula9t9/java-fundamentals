@@ -3,25 +3,22 @@ package inheritence;
 import java.util.Objects;
 
 public class Review {
-    private Restaurant restaurant;
-    private String author;
-    private int stars;
-    private String body;
+    protected String author;
+    protected int stars;
+    protected String body;
 
 
-    public Review (Restaurant restaurant, String author, String body, int stars){
-        this.restaurant = restaurant;
+    public Review (String author, String body, int stars){
         this.author = author;
         this.body = body;
         this.stars = stars;
-        this.restaurant.addReview(this);
 
     }
 
 
     public String toString(){
-        return String.format("Review for restaurant %s by author: %s, stars: %d, body: %s",
-                this.restaurant.getName(), this.author, this.stars, this.body);
+        return String.format("Review by author: %s, stars: %d, body: %s",
+               this.author, this.stars, this.body);
     }
 
 
@@ -45,8 +42,7 @@ public class Review {
         // final .equals checks restaurant equality and handles nulls
         if(this.author == thatReview.getAuthor() &&
                 this.stars == thatReview.getStars() &&
-                this.body == thatReview.getBody() &&
-                (Objects.equals(this.restaurant, thatReview.getRestaurant()))){
+                this.body == thatReview.getBody()){
             return true;
         }else {
             return false;
@@ -80,11 +76,4 @@ public class Review {
         this.stars = stars;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
 }

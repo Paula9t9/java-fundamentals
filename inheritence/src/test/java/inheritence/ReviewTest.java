@@ -23,14 +23,12 @@ public class ReviewTest {
         assertEquals("Body should read: 'This is awful.'",
                 "This is awful.", testReview.getBody());
         assertEquals("Stars should be 0", 0, testReview.getStars());
-        assertEquals("Should have the correct restaurant object",
-                testRestaurant, testReview.getRestaurant());
     }
 
 
     @Test
     public void testReviewToString(){
-        String expectedString = "Review for restaurant Cash Brewery by author: Gordon Ramsay, stars: 0, body: This is" +
+        String expectedString = "Review by author: Gordon Ramsay, stars: 0, body: This is" +
                 " awful.";
 
         assertEquals("Should return toString for appropriate Review",
@@ -51,7 +49,7 @@ public class ReviewTest {
     }
 
     private Review initializeReview(Restaurant restaurant){
-        return new Review( restaurant,
+        return new Review(
                 "Gordon Ramsay", "This is awful.", 0);
     }
 
