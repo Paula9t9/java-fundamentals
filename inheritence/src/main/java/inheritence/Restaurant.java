@@ -21,9 +21,8 @@ public class Restaurant {
 
 
     public void addReview(Review newReview){
-
+        //Don't add if review is already in list
         if(this.reviewList != null && this.reviewList.contains(newReview)){
-            //TODO: change to throw custom exception?
             System.out.println("Unable to add review. Already exists.");
         }else {
 
@@ -40,7 +39,6 @@ public class Restaurant {
 
             int starAverage = starSum / (this.reviewList.size() + 1);
             this.stars = starAverage;
-
         }
     }
 
@@ -53,7 +51,6 @@ public class Restaurant {
 
     @Override
     public boolean equals (Object o){
-
         // check if passed in object is literally this object
         if(o == this){
             return true;
@@ -80,7 +77,6 @@ public class Restaurant {
 
 
     //Getters and Setters
-
 
     public int getPriceCategory() {
         return priceCategory;
