@@ -9,12 +9,12 @@ public class Review {
     private String body;
 
 
-
     public Review (Restaurant restaurant, String author, String body, int stars){
         this.restaurant = restaurant;
         this.author = author;
         this.body = body;
         this.stars = stars;
+        this.restaurant.addReview(this);
 
     }
 
@@ -24,10 +24,10 @@ public class Review {
                 this.restaurant.getName(), this.author, this.stars, this.body);
     }
 
+
     // equals override for easier testing. Provides a Review-specific definition of equals
     @Override
     public boolean equals (Object o){
-
         // check if passed in object is literally this object
         if(o == this){
             return true;
