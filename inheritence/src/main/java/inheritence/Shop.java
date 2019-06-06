@@ -1,16 +1,15 @@
 package inheritence;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class Restaurant implements Business{
+public class Shop implements Business {
     private String name;
     private int stars;
     private int priceCategory;
-    private ArrayList<RevRestaurant> reviewList;
+    private ArrayList<RevShop> reviewList;
 
     // Don't initialize with user-defined stars because only reviews should update stars
-    public Restaurant(String name, int priceCategory) {
+    public Shop(String name, int priceCategory) {
         this.name = name;
         // initialize starSum at 3 so new restaurants don't default to 0 stars
         this.stars = 3;
@@ -18,22 +17,19 @@ public class Restaurant implements Business{
         this.reviewList = new ArrayList<>();
     }
 
-
-    public void addReview(Review incomingReview){
-        // Check that it's an instanceOf() RevReview
-        // If not, we have the wrong review - IllegalArgumentException
-        // If so, cast it and use it
-        if(!(incomingReview instanceof RevRestaurant)){
-            throw new IllegalArgumentException("Should provide a review of type RevRestaurant");
+    @Override
+    public void addReview(Review incomingReview) {
+        if(!(incomingReview instanceof RevShop)){
+            throw new IllegalArgumentException("Should provide a review of type RevShop");
         }
 
-        RevRestaurant newReview = (RevRestaurant) incomingReview;
+        RevShop newReview = (RevShop) incomingReview;
 
-        //Don't add if review is already in list
+        // Don't add if review is already in the list
+        // TODO: refactor to Hashmap so we won't need dup checking (will affect all businesses)
         if(this.reviewList != null && this.reviewList.contains(newReview)){
             System.out.println("Unable to add review. Already exists.");
         }else {
-
             this.reviewList.add(newReview);
 
             // calculate new restaurant star rating
@@ -41,7 +37,7 @@ public class Restaurant implements Business{
             // Don't use this.stars because we
             // want to iterate through reviews every time for best accuracy since we are using ints
             int starSum = 3;
-            for (RevRestaurant review : this.reviewList){
+            for (RevShop review : this.reviewList) {
                 starSum += review.getStars();
             }
 
@@ -50,13 +46,13 @@ public class Restaurant implements Business{
         }
     }
 
-
     public String toString(){
-        return String.format("Restaurant name: %s, stars: %d, priceCategory: %d",
+        return String.format("Shop name: %s, stars: %d, priceCategory: %d",
                 this.name, this.stars, this.priceCategory);
     }
 
 
+    // Overrides default equality method for proper comparison
     public boolean equals (Object o){
         // check if passed in object is literally this object
         if(o == this){
@@ -64,18 +60,18 @@ public class Restaurant implements Business{
         }
 
         // If object passed in isn't a Restaurant object, then they definitely aren't equal
-        if(!(o instanceof Restaurant)){
+        if(!(o instanceof Shop)){
             return  false;
         }
 
         // Now that we know it's a Restaurant object, let's make it one
-        Restaurant thatRestaurant = (Restaurant) o;
+        Shop thatShop = (Shop) o;
 
         // compare restaurant-specific values for equality.
         // for now, it doesn't check that restaurants have the same list of reviews
-        if(this.name == thatRestaurant.getName() &&
-                this.stars == thatRestaurant.getStars() &&
-                this.priceCategory == thatRestaurant.getPriceCategory() ){
+        if(this.name == thatShop.getName() &&
+                this.stars == thatShop.getStars() &&
+                this.priceCategory == thatShop.getPriceCategory() ){
             return true;
         }else {
             return false;
@@ -85,12 +81,12 @@ public class Restaurant implements Business{
 
     //Getters and Setters
 
-    public int getPriceCategory() {
-        return priceCategory;
+    public String getName() {
+        return name;
     }
 
-    public void setPriceCategory(int priceCategory) {
-        this.priceCategory = priceCategory;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getStars() {
@@ -101,21 +97,19 @@ public class Restaurant implements Business{
         this.stars = stars;
     }
 
-    public String getName() {
-        return name;
+    public int getPriceCategory() {
+        return priceCategory;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPriceCategory(int priceCategory) {
+        this.priceCategory = priceCategory;
     }
 
-    public ArrayList<RevRestaurant> getReviewList() {
+    public ArrayList<RevShop> getReviewList() {
         return reviewList;
     }
 
-    public void setReviewList(ArrayList<RevRestaurant> reviewList) {
+    public void setReviewList(ArrayList<RevShop> reviewList) {
         this.reviewList = reviewList;
     }
-
-
 }

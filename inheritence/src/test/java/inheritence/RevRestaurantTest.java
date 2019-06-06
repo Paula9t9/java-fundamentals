@@ -5,10 +5,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ReviewTest {
+public class RevRestaurantTest {
 
     Restaurant testRestaurant;
-    Review testReview;
+    RevRestaurant testReview;
 
     @Before
     public void initializeVariables(){
@@ -23,12 +23,14 @@ public class ReviewTest {
         assertEquals("Body should read: 'This is awful.'",
                 "This is awful.", testReview.getBody());
         assertEquals("Stars should be 0", 0, testReview.getStars());
+        assertEquals("Should have the correct restaurant object",
+                testRestaurant, testReview.getRestaurant());
     }
 
 
     @Test
-    public void testReviewToString(){
-        String expectedString = "Review by author: Gordon Ramsay, stars: 0, body: This is" +
+    public void tesRevRestaurantToString1() {
+        String expectedString = "Review for restaurant Cash Brewery by author: Gordon Ramsay, stars: 0, body: This is" +
                 " awful.";
 
         assertEquals("Should return toString for appropriate Review",
@@ -37,7 +39,7 @@ public class ReviewTest {
 
     @Test
     public void testEquals(){
-        Review sneakyCloneTestReview = initializeReview(testRestaurant);
+        RevRestaurant sneakyCloneTestReview = initializeReview(testRestaurant);
 
         assertEquals("Review should equal itself", testReview, testReview);
         assertEquals("Restaurant should equal restaurant with same values",
@@ -48,10 +50,8 @@ public class ReviewTest {
         return new Restaurant("Cash Brewery", 2);
     }
 
-    private Review initializeReview(Restaurant restaurant){
-        return new Review(
+    private RevRestaurant initializeReview(Restaurant restaurant){
+        return new RevRestaurant( restaurant,
                 "Gordon Ramsay", "This is awful.", 0);
     }
-
-
 }
